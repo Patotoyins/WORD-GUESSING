@@ -1,0 +1,92 @@
+for i in range(5):
+
+    import random
+
+
+    name = input("What is your name? ")
+
+    print("Good Luck ! ", name)
+
+    repeat = True
+    while repeat == True :
+        fruits =  ['apple', 'melon','mango', 'lime', 'kiwi', 'grapes', 'cherry',]
+
+        animals = ['ants', 'panda', 'giraffe', 'bat', 'bear','wolf', 'zebra', 'eagle',]
+
+        accessories = ['ring', 'crown','necklace', 'watch', 'caps', 'glasses', 'wallet','belts', 'comb', 'earring', 'scarf',]
+
+        stationary = ['notebook', 'tape', 'pencil', 'eraser', 'sharpener','files',]
+
+        words = fruits + animals + accessories + stationary
+
+        word = random.choice(words)
+        print("Your word has", len(word), "letters.")
+
+
+        print()
+
+        if word in fruits:
+            print("Your word is a Fruit.")
+        elif word in accessories:
+            print("Your word is related to Accessory.")
+        elif word in stationary:
+            print("Your word is related to Stationary.")
+        elif word in animals:
+            print("Your word is an Animal")
+        print("Guess the characters")
+
+        guesses = ''
+
+        turns = 5
+        points = 50
+
+        while turns > 0:
+
+            failed = 0
+
+            for char in word:
+
+                if char in guesses:
+                    print(char, end="")
+
+                else:
+                    print("_")
+
+                    failed += 1
+
+            if failed == 0:
+
+                print("You Win")
+
+                print("The word is: ", word)
+                print("Your points" , points)
+
+
+                play_again = input("Would you like to play again? yes or no!")
+                if play_again == "yes":
+                    print("you select yes")
+                    break
+                else:
+                    print("you select no")
+                    exit()
+
+            guess = input("guess a character:")
+
+            guesses += guess
+
+            if guess not in word:
+
+                turns -= 1
+                points -= 10
+
+                print("Wrong")
+
+                print("You have", + turns, 'more guesses')
+                print("You have", + points, 'points left')
+
+                if turns == 0:
+                    print("You Loose")
+                    print("Game over")
+                    exit()
+
+
